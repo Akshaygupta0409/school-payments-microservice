@@ -7,6 +7,7 @@ import indexRouter from './routes/index.js';
 import authRouter from './routes/auth.js';
 import usersRouter from './routes/users.js';
 import ordersRouter from './routes/orders.js';
+import paymentsRouter from './routes/payments.js';
 
 const app = express();
 
@@ -21,7 +22,8 @@ connectDB();
 app.use('/', indexRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
-app.use('/api/orders', ordersRouter);
+//app.use('/api/orders', ordersRouter);
+app.use('/api/payments', paymentsRouter);
 
 // Error handler
 app.use((err, req, res, next) => {
