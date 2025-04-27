@@ -3,10 +3,19 @@ const { Schema, model, Types } = mongoose;
 
 const orderStatusSchema = new Schema(
   {
-    collect_id: { type: Types.ObjectId, ref: 'Order', required: true, index: true },
+    collect_id: { 
+      type: String, 
+      required: true, 
+      index: true,
+    },
+    order_id: {
+      type: Types.ObjectId,
+      ref: 'Order',
+      required: true,
+    },
     order_amount: { type: Number, required: true },
-    transaction_amount: { type: Number, required: true },
-    payment_mode: { type: String, required: true },
+    transaction_amount: { type: Number },
+    payment_mode: { type: String },
     payment_details: { type: String },
     bank_reference: { type: String },
     payment_message: { type: String },
