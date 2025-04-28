@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-dark-bg text-white;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Neon glow effect */
+.neon-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.neon-glow:hover {
+  text-shadow: 0 0 20px rgba(0, 255, 255, 1);
+}
