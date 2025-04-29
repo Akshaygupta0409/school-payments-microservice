@@ -25,6 +25,7 @@ export default function TransactionStatusCheck() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     setLoading(true);
     setError(null);
     setResult(null);
@@ -72,6 +73,28 @@ export default function TransactionStatusCheck() {
 
       // Log the full error for debugging
       console.error('Transaction status check error:', err);
+=======
+    if (!orderId.trim()) {
+      setError('Please enter an Order ID');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError('');
+      setResult(null);
+
+      const response = await axios.get(`/api/payments/transaction-status/${orderId}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      setResult(response.data);
+    } catch (err) {
+      console.error('Error checking transaction status:', err);
+      setError(err.response?.data?.message || 'Failed to check transaction status. Please try again.');
+>>>>>>> 272ee2693445b70699169ced8c99b1e27478756c
     } finally {
       setLoading(false);
     }
@@ -195,7 +218,11 @@ export default function TransactionStatusCheck() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                 <div>
                   <div className="text-xs text-gray-500 mb-1">Order ID</div>
+<<<<<<< HEAD
                   <div className="text-gray-300 truncate">{result.order_id || 'N/A'}</div>
+=======
+                  <div className="text-gray-300 truncate">{result.custom_order_id || result.order_id || 'N/A'}</div>
+>>>>>>> 272ee2693445b70699169ced8c99b1e27478756c
                 </div>
                 <div>
                   <div className="text-xs text-gray-500 mb-1">Collection ID</div>
